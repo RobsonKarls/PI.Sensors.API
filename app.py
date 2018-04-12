@@ -25,7 +25,7 @@ def initialize_app(flask_app):
 
 def main():
     initialize_app(app)
-    app.run(debug=settings.FLASK_DEBUG)
+    app.run(debug=settings.FLASK_DEBUG, port=80, host='localhost')
 
 
 if __name__ == "__main__":
