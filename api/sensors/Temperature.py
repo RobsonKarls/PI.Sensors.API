@@ -1,5 +1,6 @@
 from random import randint
 import os
+import datetime
 
 class Temperature:
 
@@ -8,7 +9,15 @@ class Temperature:
 
     @staticmethod
     def fake_read():
-        return randint(-40,40)
+        t = randint(-40,40)
+        return {
+                    'temperature': t,
+                    'datetime': datetime.datetime.now(), 
+                    'location':{
+                        'longitude' : '01.000000',
+                        'latitude':'09.000000' 
+                    }  
+                }
 
     def read(self):
     #	global ds18b20
@@ -20,7 +29,15 @@ class Temperature:
         temperaturedata = secondline.split(" ")[9]
         temperature = float(temperaturedata[2:])
         temperature = temperature / 1000
-        return temperature
+        retult = {
+                    'temperature': temperature,
+                    'datetime': datetime.datetime.now(), 
+                    'location':{
+                        'longitude' : '01.000000',
+                        'latitude':'09.000000' 
+                    }  
+                }
+        return retult
 
     def setup(self):
         for i in os.listdir('/sys/bus/w1/devices'):
