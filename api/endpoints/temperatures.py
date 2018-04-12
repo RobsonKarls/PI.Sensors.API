@@ -27,5 +27,5 @@ class Temperatures(Resource):
    @ns.marshal_with(temperature)
    def get(self):
         t = Temperature()
-        result = t.fake_read()
+        result = t.read()
         return result
