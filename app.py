@@ -17,7 +17,7 @@ def configure_app(flask_app):
     flask_app.config['ERROR_404_HELP'] = settings.RESTPLUS_ERROR_404_HELP
 
 def initialize_app(flask_app):
-    configure_app(flask_app)
+#    configure_app(flask_app)
     blueprint = Blueprint('Sensors API', __name__, url_prefix='')
     api.init_app(blueprint)
     api.add_namespace(temperature_namespace)
@@ -25,7 +25,7 @@ def initialize_app(flask_app):
 
 def main():
     initialize_app(app)
-    app.run(host='0.0.0.0', port=80, debug=settings.FLASK_DEBUG)
+    app.run(host='0.0.0.0', port=8080, debug=settings.FLASK_DEBUG)
 
 
 if __name__ == "__main__":
