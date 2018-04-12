@@ -1,4 +1,6 @@
+from random import randint
+
 class Temperature:
     @staticmethod
     def read():
-        return 35
+        return randint(-40,40)
