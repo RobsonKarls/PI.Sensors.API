@@ -18,14 +18,14 @@ def configure_app(flask_app):
 
 def initialize_app(flask_app):
     configure_app(flask_app)
-    blueprint = Blueprint('', __name__, url_prefix='')
+    blueprint = Blueprint('Sensors API', __name__, url_prefix='')
     api.init_app(blueprint)
     api.add_namespace(temperature_namespace)
     flask_app.register_blueprint(blueprint)
 
 def main():
     initialize_app(app)
-    app.run(debug=settings.FLASK_DEBUG)
+    app.run(host='0.0.0.0', port=80, debug=settings.FLASK_DEBUG)
 
 
 if __name__ == "__main__":
