@@ -5,7 +5,7 @@ import datetime
 class Temperature:
 
     def __init__(self):
-        self.dsl8b20 = ''
+        self.ds18b20 = ''
 
     @staticmethod
     def fake_read():
@@ -21,7 +21,8 @@ class Temperature:
 
     def read(self):
     #	global ds18b20
-        location = '/sys/bus/w1/devices/' + self.ds18b20 + '/w1_slave'
+        self.setup()
+        location = '/sys/bus/w1/devices/' + self.ds18b20.lower() + '/w1_slave'
         tfile = open(location)
         text = tfile.read()
         tfile.close()
@@ -42,4 +43,4 @@ class Temperature:
     def setup(self):
         for i in os.listdir('/sys/bus/w1/devices'):
             if i != 'w1_bus_master1':
-                self.ds18b20 = i
+                self.ds18b20 = str(i)
