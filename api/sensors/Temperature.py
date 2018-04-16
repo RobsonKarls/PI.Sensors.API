@@ -43,4 +43,4 @@ class Temperature:
     def setup(self):
         for i in os.listdir('/sys/bus/w1/devices'):
             if i != 'w1_bus_master1':
-                self.ds18b20 = i
+                self.ds18b20 = str(i)
