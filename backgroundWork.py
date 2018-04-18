@@ -44,7 +44,7 @@ class BackgroundWork():
         try:
             while True:
                 gpsData.start()
-                g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speeding, gpsData.fix.time_utc)
+                g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speed, gpsdata.utc, " + ", gpsData.fix.time)
                 snapshot =  {
                     'DeviceId': 99,
                     'sound': self.getSound(),
