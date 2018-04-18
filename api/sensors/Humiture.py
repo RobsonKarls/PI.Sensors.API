@@ -106,7 +106,7 @@ def read_dht11_dat():
 
 def read_humiture():
     result = read_dht11_dat()
-    if result
+    if result:
         humidity, temperature = result
         return " %s %%" %(humidity)
 
