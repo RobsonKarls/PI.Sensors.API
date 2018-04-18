@@ -50,7 +50,7 @@ if __name__ == '__main__':
             print("track ", gpsReceiver.fix.track)
             print("mode ", gpsReceiver.fix.mode)
             print("sats ", gpsReceiver.satellites)
-            time.sleep(0.5)
+            time.sleep(5)
     #Ctrl C
     except KeyboardInterrupt:
         print("User cancelled")
