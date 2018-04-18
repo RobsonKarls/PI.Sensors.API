@@ -1,13 +1,12 @@
 
 import os
 import settings
+from backgroundWork import BackgroundWork
 from flask import Flask, Blueprint
 from api.restplus import api
 from api.endpoints.temperatures import ns as temperature_namespace
 
 app = Flask(__name__)
-
-
 
 def configure_app(flask_app):
     #flask_app.config['SERVER_NAME'] = settings.FLASK_SERVER_NAME
@@ -26,7 +25,8 @@ def initialize_app(flask_app):
 def main():
     initialize_app(app)
     app.run(host='0.0.0.0', port=8080, debug=settings.FLASK_DEBUG)
-
+    bgWork = BackgroundWork()
+    bgWork.start()
 
 if __name__ == "__main__":
     main()
