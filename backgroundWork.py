@@ -30,6 +30,7 @@ class BackgroundWork(threading.Thread):
         
         try:
             gpsData.start()
+            print(self.getFlame())
             while True:
                 utc_time = gpsData.utc, " + ", gpsData.fix.time
                 g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speed, utc_time)
