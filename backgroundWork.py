@@ -33,16 +33,16 @@ class BackgroundWork(threading.Thread):
                 g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speed, utc_time)
                 snapshot =  {
                     'DeviceId': 99,
-                    'sound': self.getSound(),
-                    'time_utc': g.time_utc,
-                    'flame': self.getFlame,
-                    'temperature': 24,
-                    'speeding': g.speeding,
-                    'latitude': g.latitude,
-                    'altitude': g.altitude,
-                    'humiture': self.getHumiture(),
-                    'longitude': g.longitude,
-                    'datetime': datetime.datetime.now()
+                    'BigSound': self.getSound(),
+                    'Time_utc': g.time_utc,
+                    'Flame': self.getFlame,
+                    'Temperature': 24,
+                    'Speeding': g.speeding,
+                    'Latitude': g.latitude,
+                    'Altitude': g.altitude,
+                    'Humidity': self.getHumiture(),
+                    'Longitude': g.longitude,
+                    'Datetime': datetime.datetime.now()
                     }
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
@@ -58,5 +58,9 @@ class BackgroundWork(threading.Thread):
         finally:
             gpsData.stop()
             gpsData.join()
+
+    if __name__ == '__main__':
+        bgWork = BackgroundWork()
+        bgWork.start()
 
         

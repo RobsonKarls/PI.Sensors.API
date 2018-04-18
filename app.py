@@ -23,10 +23,10 @@ def initialize_app(flask_app):
     flask_app.register_blueprint(blueprint)
 
 def main():
-    initialize_app(app)
     bgWork = BackgroundWork()
     bgWork.start()
-    app.run(host='0.0.0.0', port=8080, debug=settings.FLASK_DEBUG)
+    #initialize_app(app)
+    #app.run(host='0.0.0.0', port=8080, debug=settings.FLASK_DEBUG)
     
 
 if __name__ == "__main__":
