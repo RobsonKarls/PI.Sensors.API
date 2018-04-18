@@ -2,6 +2,7 @@
 import json
 import requests
 import datetime
+import time
 from collections import namedtuple
 from api.sensors.GpsReceiver import GpsReceiver
 
@@ -45,6 +46,7 @@ class BackgroundWork():
                 gpsData.start()
                 g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speeding, gpsData.fix.time_utc)
                 snapshot =  {
+                    'DeviceId': 99,
                     'sound': self.getSound(),
                     'time_utc': g.time_utc,
                     'flame': self.getFlame,
@@ -59,7 +61,10 @@ class BackgroundWork():
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
 
-                requests.post(url, data = snapshot)
+                r = requests.post(url, data = snapshot)
+                print(r.status_code, r.reason, r.text)
+
+                time.sleep(5)
         except:
             #print('Unexpected error:', sys.exc_info()[0])
             print('Unexpected error:')
