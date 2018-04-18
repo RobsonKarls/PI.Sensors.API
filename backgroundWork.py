@@ -42,8 +42,8 @@ class BackgroundWork():
         result = namedtuple('result', 'latitude longitude altitude speeding time_utc')
         
         try:
+            gpsData.start()
             while True:
-                gpsData.start()
                 utc_time = gpsData.utc, " + ", gpsData.fix.time
                 g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speed, utc_time)
                 snapshot =  {
