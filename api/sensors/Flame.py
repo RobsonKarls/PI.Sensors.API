@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import math
-from modules import PCF8591 as ADC
+from modules.PCF8591 import PCF8591 as ADC
 
 class Flame():
     def __init__(self):
