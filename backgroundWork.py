@@ -5,6 +5,7 @@ import datetime
 import time
 import threading
 import math
+from api.sensors.Flame import Flame
 from collections import namedtuple
 from api.sensors.GpsReceiver import GpsReceiver
 
@@ -14,7 +15,8 @@ class BackgroundWork(threading.Thread):
         return 1
 
     def getFlame(self):
-        return 'flame'
+        flame = Flame()
+        return flame.read()
 
     def getSound(self):
         return 'sound'
