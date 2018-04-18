@@ -3,11 +3,13 @@ import json
 import requests
 import datetime
 import time
+import threading
+import math
 from collections import namedtuple
 from api.sensors.GpsReceiver import GpsReceiver
 
-class BackgroundWork():
-    
+class BackgroundWork(threading.Thread):
+
     def getTemperature(self):
         return 1
 
@@ -19,24 +21,7 @@ class BackgroundWork():
 
     def getHumiture(self):
         return ''
-
-    def getGpsData(self):
-        gpsData = GpsReceiver()
-        result = namedtuple('result', 'latitude longitude altitude speeding time_utc')
-        
-        try:
-            gpsData.start()
-            r = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speeding, gpsData.fix.time_utc)
-            return r
-        except:
-            #print('Unexpected error:', sys.exc_info()[0])
-            print('Unexpected error:')
-            
-            raise
-        finally:
-            gpsData.stop()
-            gpsData.join()
-
+    
     def start(self):
         gpsData = GpsReceiver()
         result = namedtuple('result', 'latitude longitude altitude speeding time_utc')
