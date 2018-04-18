@@ -8,6 +8,7 @@ import math
 from api.sensors.Flame import Flame
 from api.sensors.GpsReceiver import GpsReceiver
 from api.sensors.Humiture import read_humiture
+from api.sensors.Sound import Sound
 from collections import namedtuple
 
 class BackgroundWork(threading.Thread):
@@ -20,7 +21,8 @@ class BackgroundWork(threading.Thread):
         return flame.read()
 
     def getSound(self):
-        return 'sound'
+        sound = Sound()
+        return sound.read()
 
     def getHumiture(self):
         return read_humiture()
