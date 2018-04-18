@@ -6,8 +6,9 @@ import time
 import threading
 import math
 from api.sensors.Flame import Flame
-from collections import namedtuple
 from api.sensors.GpsReceiver import GpsReceiver
+from api.sensors.Humiture import read_humiture
+from collections import namedtuple
 
 class BackgroundWork(threading.Thread):
 
@@ -22,7 +23,7 @@ class BackgroundWork(threading.Thread):
         return 'sound'
 
     def getHumiture(self):
-        return ''
+        return read_humiture()
     
     def start(self):
         gpsData = GpsReceiver()

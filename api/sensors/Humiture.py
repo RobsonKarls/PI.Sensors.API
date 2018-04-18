@@ -104,6 +104,12 @@ def read_dht11_dat():
 
 	return the_bytes[0], the_bytes[2]
 
+def read_humiture():
+    result = read_dht11_dat()
+    if result
+        humidity, temperature = result
+        return " %s %%" %(humidity)
+
 def main():
 	print "Raspberry Pi wiringPi DHT11 Temperature test program\n"
 	while True:
