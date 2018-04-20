@@ -30,16 +30,8 @@ class Temperature:
         temperaturedata = secondline.split(" ")[9]
         temperature = float(temperaturedata[2:])
         temperature = temperature / 1000
-        retult = {
-                    'temperature': temperature,
-                    'datetime': datetime.datetime.now(), 
-                    'location':{
-                        'longitude' : '01.000000',
-                        'latitude':'09.000000' 
-                    }  
-                }
-        return retult
-
+        return temperature
+        
     def setup(self):
         for i in os.listdir('/sys/bus/w1/devices'):
             if i != 'w1_bus_master1':
