@@ -1,6 +1,5 @@
 
 import os
-import settings
 from backgroundWork import BackgroundWork
 
 def main():
