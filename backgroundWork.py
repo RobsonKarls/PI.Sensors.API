@@ -7,20 +7,22 @@ import threading
 import math
 from api.sensors.Flame import Flame
 from api.sensors.GpsReceiver import GpsReceiver
+from api.sensors.Temperature import Temperature
 from api.sensors.Humiture import read_humiture
 from collections import namedtuple
 
 class BackgroundWork(threading.Thread):
 
     def getTemperature(self):
-        return 1
+        temperature = Temperature()
+        return temperature.read()
 
     def getFlame(self):
         flame = Flame()
         return flame.read()
 
     def getSound(self):
-        return 'sound'
+        return 0
 
     def getHumiture(self):
         return read_humiture()
@@ -39,7 +41,7 @@ class BackgroundWork(threading.Thread):
                     'BigSound': self.getSound(),
                     'Time_utc': g.time_utc,
                     'Flame': self.getFlame(),
-                    'Temperature': 24,
+                    'Temperature': self.getTemperature(),
                     'Speeding': g.speeding,
                     'Latitude': g.latitude,
                     'Altitude': g.altitude,
@@ -62,8 +64,5 @@ class BackgroundWork(threading.Thread):
             gpsData.stop()
             gpsData.join()
 
-    if __name__ == '__main__':
-        bgWork = BackgroundWork()
-        bgWork.start()
 
         
