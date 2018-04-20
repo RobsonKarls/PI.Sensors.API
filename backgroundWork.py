@@ -12,16 +12,14 @@ from api.sensors.Humiture import read_humiture
 from api.sensors.Sound import Sound
 from collections import namedtuple
 
-class MyJsonEncoder(json.JSONEncoder):
-   def default(self, obj):
-      if isinstance(obj, datetime):
-         # format however you like/need
-         return obj.strftime("%Y-%m-%d")
-      # pass any other unknown types to the base class handler, probably
-      # to raise a TypeError.   
-      return json.JSONEncoder.default(self, obj)
-
 class BackgroundWork(threading.Thread):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            # format however you like/need
+            return obj.strftime("%Y-%m-%d")
+        # pass any other unknown types to the base class handler, probably
+        # to raise a TypeError.   
+        return json.JSONEncoder.default(self, obj)
 
     def getTemperature(self):
         temperature = Temperature()
@@ -62,7 +60,7 @@ class BackgroundWork(threading.Thread):
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
 
-                r = requests.post(url, json = json.dumps(snapshot, cls=MyJsonEncoder))
+                r = requests.post(url, json = json.dumps(snapshot, default=self.default))
                 
                 print(r.status_code, r.reason, r.text)
 
