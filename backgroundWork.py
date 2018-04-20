@@ -53,7 +53,8 @@ class BackgroundWork(threading.Thread):
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
 
-                r = requests.post(url, data = snapshot)
+                r = requests.post(url, json = snapshot)
+                
                 print(r.status_code, r.reason, r.text)
 
                 time.sleep(5)
