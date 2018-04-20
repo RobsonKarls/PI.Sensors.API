@@ -15,6 +15,5 @@ class Flame:
         GPIO.setup(self.DO, GPIO.IN)
 
     def read(self):
-        print ADC.read(0)
         tmp = GPIO.input(self.DO)
         return tmp
