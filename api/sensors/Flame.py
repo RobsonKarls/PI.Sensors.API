@@ -18,4 +18,3 @@ class Flame:
         print ADC.read(0)
         tmp = GPIO.input(self.DO)
         return tmp
-
