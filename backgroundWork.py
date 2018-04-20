@@ -9,7 +9,7 @@ from api.sensors.Flame import Flame
 from api.sensors.GpsReceiver import GpsReceiver
 from api.sensors.Temperature import Temperature
 from api.sensors.Humiture import read_humiture
-from api.sensors.Sound import Sound
+from api.sensors.Sound import readSound
 from collections import namedtuple
 
 def datetime_handler(x):
@@ -29,7 +29,7 @@ class BackgroundWork(threading.Thread):
         return flame.read()
 
     def getSound(self):
-        return 0
+        return readSound()
 
     def getHumiture(self):
         return read_humiture()
