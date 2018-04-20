@@ -46,20 +46,20 @@ class BackgroundWork(threading.Thread):
                 snapshot =  {
                     'DeviceId': 99,
                     'BigSound': 0, #self.getSound(),
-                    'Time_utc': g.time_utc,
+                    #'Time_utc': g.time_utc,
                     'Flame': self.getFlame(),
                     'Temperature': self.getTemperature(),
                     'Speeding': g.speeding,
                     'Latitude': g.latitude,
                     'Altitude': g.altitude,
                     'Humidity': self.getHumiture(),
-                    'Longitude': g.longitude,
-                    'Datetime': datetime.datetime.now()
+                    'Longitude': g.longitude
+                    #'Datetime': datetime.datetime.now()
                     }
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
 
-                r = requests.post(url, json = json.dumps(snapshot, default=datetime_handler))
+                r = requests.post(url, json = snapshot)
                 
                 print(r.status_code, r.reason, r.text)
 
