@@ -29,8 +29,7 @@ class BackgroundWork(threading.Thread):
         return flame.read()
 
     def getSound(self):
-        s = Sound()
-        return s.read()
+        return 0
 
     def getHumiture(self):
         return read_humiture()
