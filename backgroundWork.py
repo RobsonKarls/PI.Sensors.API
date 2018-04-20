@@ -41,13 +41,8 @@ class BackgroundWork(threading.Thread):
                     'DeviceId': 99,
                     'BigSound': 0,#self.getSound(),
                     'Time_utc': g.time_utc,
-<<<<<<< HEAD
-                    'Flame': self.getFlame(),
+                    'Flame': 1,#self.getFlame(),
                     'Temperature': self.getTemperature(),
-=======
-                    'Flame': 1, #self.getFlame(),
-                    'Temperature': 24,
->>>>>>> d8f20839c92a2fbd8f5371358b303af82dd7d1da
                     'Speeding': g.speeding,
                     'Latitude': g.latitude,
                     'Altitude': g.altitude,
