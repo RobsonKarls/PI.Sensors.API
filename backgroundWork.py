@@ -37,9 +37,9 @@ class BackgroundWork(threading.Thread):
                 g = result(gpsData.fix.latitude, gpsData.fix.longitude, gpsData.fix.altitude, gpsData.fix.speed, utc_time)
                 snapshot =  {
                     'DeviceId': 99,
-                    'BigSound': self.getSound(),
+                    'BigSound': 0,#self.getSound(),
                     'Time_utc': g.time_utc,
-                    'Flame': self.getFlame(),
+                    'Flame': 1, #self.getFlame(),
                     'Temperature': 24,
                     'Speeding': g.speeding,
                     'Latitude': g.latitude,
@@ -63,8 +63,5 @@ class BackgroundWork(threading.Thread):
             gpsData.stop()
             gpsData.join()
 
-    if __name__ == '__main__':
-        bgWork = BackgroundWork()
-        bgWork.start()
 
         
