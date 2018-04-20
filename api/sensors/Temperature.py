@@ -7,18 +7,6 @@ class Temperature:
     def __init__(self):
         self.ds18b20 = ''
 
-    @staticmethod
-    def fake_read():
-        t = randint(-40,40)
-        return {
-                    'temperature': t,
-                    'datetime': datetime.datetime.now(), 
-                    'location':{
-                        'longitude' : '01.000000',
-                        'latitude':'09.000000' 
-                    }  
-                }
-
     def read(self):
     #	global ds18b20
         self.setup()
@@ -31,7 +19,7 @@ class Temperature:
         temperature = float(temperaturedata[2:])
         temperature = temperature / 1000
         return temperature
-        
+
     def setup(self):
         for i in os.listdir('/sys/bus/w1/devices'):
             if i != 'w1_bus_master1':
