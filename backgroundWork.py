@@ -12,6 +12,12 @@ from api.sensors.Humiture import read_humiture
 from api.sensors.Sound import Sound
 from collections import namedtuple
 
+def date_handler(obj):
+    if hasattr(obj, 'isoformat'):
+        return obj.isoformat()
+    else:
+        raise TypeError
+
 class BackgroundWork(threading.Thread):
 
     
@@ -55,7 +61,7 @@ class BackgroundWork(threading.Thread):
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
 
-                r = requests.post(url, json = json.dumps(snapshot, indent=4, sort_keys=True, default=str))
+                r = requests.post(url, json = json.dumps(snapshot, default=date_handler))
                 
                 print(r.status_code, r.reason, r.text)
 
