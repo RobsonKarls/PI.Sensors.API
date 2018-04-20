@@ -11,7 +11,7 @@ class Sound():
     def read(self):
         self.setup()
         result = ADC.read(0)
-        if result < 30:
+        if result < 10:
             return 1
         else:
             return 0
