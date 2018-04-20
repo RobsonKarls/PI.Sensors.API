@@ -14,6 +14,8 @@ from collections import namedtuple
 
 class BackgroundWork(threading.Thread):
 
+    
+
     def getTemperature(self):
         temperature = Temperature()
         return temperature.read()
@@ -53,7 +55,7 @@ class BackgroundWork(threading.Thread):
 
                 url = 'http://hackathon2018-env.umbtvgkrye.us-east-2.elasticbeanstalk.com/Api/Snapshot'
 
-                r = requests.post(url, json = snapshot)
+                r = requests.post(url, json = json.dumps(snapshot, indent=4, sort_keys=True, default=str))
                 
                 print(r.status_code, r.reason, r.text)
 
